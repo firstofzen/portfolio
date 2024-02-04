@@ -6,9 +6,10 @@ section.page1
   grid-template-rows: 1fr 1fr 1fr 1fr 0.5fr
 
   .my-avatar
-    @include mobile
 
+    @include mobile
       margin-top: 2em
+
     grid-row-start: 1
     grid-row-end: 5
     grid-column-start: 1
@@ -56,3 +57,5 @@ section.page1
     grid-column-start: 1
     grid-column-end: 5
     text-align: center
+    @include desktop
+      margin-top: 1em

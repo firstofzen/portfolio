@@ -23,7 +23,7 @@ const Page1 = () => {
                         "i'm backend developer",
                         800,
                         "i can build api with golang and java and kafka, later deploy them to cloud platform",
-                        1500,
+                        2500,
                         "i can too build web application with reactjs",
                         1500,
                         "and more...",
