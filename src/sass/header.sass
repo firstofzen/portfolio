@@ -1,0 +1,41 @@
+@use "sass:math"
+@import "global"
+
+
+nav.navbar
+  background-color: transparent !important
+  backdrop-filter: blur($blur-size) !important
+  border-bottom: 1px solid  $grey-color
+  -webkit-backdrop-filter: blur($blur-size)
+  .navbar-menu
+    .navbar-start
+      .navbar-item
+
+        color: $text-color
+
+        .navbar-dropdown
+          a
+            &:hover
+              color: ghostwhite
+
+        >*
+          transition: 0.3s all ease-out
+          background-color: transparent
+          color: $text-color
+          &:hover
+            background-color: transparent
+        &:hover
+          background-color: transparent !important
+          border-right: 1px solid $grey-color
+          transition: all 0.3s ease-out
+
+  .navbar-brand
+    a
+      margin-left: 0
+
+      svg
+        margin-top: 0.5rem
+        margin-left: 0.5rem
+
+
+

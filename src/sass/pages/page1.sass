@@ -1,0 +1,58 @@
+@import "/src/sass/global"
+
+section.page1
+  top: 10dvh
+  grid-template-columns: 1fr 1fr 1fr 1fr
+  grid-template-rows: 1fr 1fr 1fr 1fr 0.5fr
+
+  .my-avatar
+    @include mobile
+
+      margin-top: 2em
+    grid-row-start: 1
+    grid-row-end: 5
+    grid-column-start: 1
+    grid-column-end: 3
+
+    figure
+      img
+        border-radius: 8rem 1.5em 8rem 1.5em
+        @include mobile
+          border-radius: 65px 1.5em 65px 1.5em
+
+  .my-tile
+    display: flex
+    justify-content: center
+    align-items: center
+
+    p
+
+      margin-top: 1.7em
+      font-size: 6rem
+      font-weight: 800
+
+      @include mobile
+        margin-left: 0.8em
+        font-size: 2rem
+
+      white-space: nowrap
+      color: white
+    grid-column-start: 3
+    grid-column-end: 5
+    grid-row-start: 1
+    grid-row-end: 2
+
+
+  .my-description
+    grid-column-start: 3
+    grid-column-end: 5
+    grid-row-start: 2
+    grid-row-end: 6
+
+
+  .my-typing
+    grid-row-start: 5
+    grid-row-end: 6
+    grid-column-start: 1
+    grid-column-end: 5
+    text-align: center
