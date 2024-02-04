@@ -5,13 +5,15 @@ const Page1 = () => {
         <section className={"section page1"}>
             <div className={"my-avatar"}>
                 <figure className={"image is-square"}>
-                    <img src={"/src/assets/xie.jpg"}></img>
+                    <img src={"/static/xie.jpg"}></img>
                 </figure>
             </div>
             <div className={"my-tile"}>
                 <p>Duc Anh</p>
             </div>
-            <div className={"my-description"}></div>
+            <div className={"my-description"}>
+
+            </div>
             <div className={"my-typing"}>
                 <TypeAnimation
                     sequence={[
