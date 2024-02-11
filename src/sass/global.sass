@@ -1,9 +1,17 @@
+@use "sass:math"
 @import "node_modules/bulma/bulma"
 $dark-color: #0e100f
 $grey-color: #adb5bd
+$card-color: #2b2d42
 $blur-size: 35px
 $text-color: #8d99ae
+$dark-blue-color: #415a77
+$light-pink-color: #ffe5ec
 
+@mixin flex-center
+  display: flex
+  justify-content: center
+  align-items: center
 
 .popup
   position: fixed
@@ -18,9 +26,11 @@ $text-color: #8d99ae
   backdrop-filter: blur($blur-size)
   -webkit-backdrop-filter: blur($blur-size)
   border-radius: 10px
+
   >*
     margin-left: 1em
     margin-top: 1em
+
   @include desktop
     display: none
 
@@ -30,3 +40,31 @@ section
   margin-bottom: 5px
   height: 100svh !important
   border-bottom: 1px solid $grey-color
+
+.glass-card
+  backdrop-filter: blur(15px)
+  -webkit-backdrop-filter: blur($blur-size)
+  border: 2px solid $grey-color
+  border-radius: 5px
+  height: 100%
+  width: 100%
+  position: absolute
+  backface-visibility: hidden
+  transition: 0.3s all ease-out
+  ul
+    li
+      p
+        text-align: center
+        color: $text-color
+        font-size: 0.8em
+      h1
+        font-size: math.clamp(1.1em, 1.3em, 1.4em)
+        color: white
+        text-align: center
+
+  h1.my-tile
+    text-align: center
+    color: white
+    font-size: math.clamp(1em, 1.6em, 1.8em)
+
+

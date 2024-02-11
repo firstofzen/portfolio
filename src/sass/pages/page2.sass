@@ -1,1 +1,93 @@
+@use "sass:math"
 @import "/src/sass/global"
+
+.page2
+  background-image: url("/static/bg-page2.gif")
+  background-size: cover
+  background-position: center center
+  background-repeat: no-repeat
+  min-height: 100%
+  min-width: 100%
+  position: relative
+  display: grid
+  grid-template-columns: 1fr 1fr
+  grid-template-rows: 1fr 1fr 0.3fr
+  @include mobile
+    grid-template-columns: 1fr
+    grid-template-rows: repeat(4, 1fr) 0.3fr
+
+  .my-card
+    position: absolute
+    height: 95%
+    width: 95%
+    margin: 1em
+
+    .gc-front
+      display: flex
+      justify-content: center
+      align-items: center
+    .gc-back
+      ul
+        li
+          p
+            color: $light-pink-color
+            margin-top: math.clamp(1em, 1.5em, 1.7em)
+            @include mobile
+              margin-top: 0
+              font-size: 0.8em
+      transform: rotateY(-180deg)
+
+    &:hover
+      .gc-back
+        transform: rotateY(0deg)
+      .gc-front
+        transform: rotateY(180deg)
+
+  .java
+    grid-column-start: 1
+    grid-column-end: 2
+    grid-row-start: 1
+    grid-row-end: 2
+    @include mobile
+      grid-column-start: 1
+      grid-column-end: 2
+      grid-row-start: 1
+      grid-row-end: 2
+
+  .golang
+    grid-column-start: 1
+    grid-column-end: 2
+    grid-row-start: 2
+    grid-row-end: 3
+
+    @include mobile
+      grid-column-start: 1
+      grid-column-end: 2
+      grid-row-start: 2
+      grid-row-end: 3
+
+  .frontend
+    grid-column-start: 2
+    grid-column-end: 3
+    grid-row-start: 1
+    grid-row-end: 2
+
+    @include mobile
+
+      grid-column-start: 1
+      grid-column-end: 2
+      grid-row-start: 3
+      grid-row-end: 4
+
+  .devops
+    grid-column-start: 2
+    grid-column-end: 3
+    grid-row-start: 2
+    grid-row-end: 3
+
+    @include mobile
+
+      grid-column-start: 1
+      grid-column-end: 2
+      grid-row-start: 4
+      grid-row-end: 5
