@@ -36,18 +36,17 @@
               margin-top: 0
               font-size: 0.8em
       transform: rotateY(-180deg)
-
     &:hover
       .gc-back
         transform: rotateY(0deg)
       .gc-front
         transform: rotateY(180deg)
-
   .java
     grid-column-start: 1
     grid-column-end: 2
     grid-row-start: 1
     grid-row-end: 2
+    -webkit-transform-style: preserve-3d
     @include mobile
       grid-column-start: 1
       grid-column-end: 2

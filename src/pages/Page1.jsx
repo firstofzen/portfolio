@@ -21,8 +21,8 @@ const Page1 = () => {
 
         const svg1 = document.querySelector("section .card-1 .svg1 div svg")
         const svg2 = document.querySelector("section .card-1 .svg2 div svg")
-        //appear
 
+        //appear
         gsap.fromTo(p11.current, {
             translateX: -500, ease: "expo.out"
         }, {
@@ -42,21 +42,23 @@ const Page1 = () => {
         })
 
         gsap.fromTo(p21.current, {
-
+            translateY: 150
         }, {
-
+            translateY: 0 , duration: 1, ease: "elastic.out"
         })
 
         gsap.fromTo(p22.current, {
+            rotation: 180
 
         }, {
+            rotation: 0, duration: 2, ease: "bounce.out", delay: 0.5
 
         })
 
         gsap.fromTo(p23.current, {
-
+            translateX: 200
         }, {
-
+            translateX: 0, duration: 2, ease: "elastic.out"
         })
 
         //appear-svg
@@ -67,11 +69,15 @@ const Page1 = () => {
         })
 
         // loop
-        let tl1 = gsap.timeline({
+        let tlsvg = gsap.timeline({
             repeat: -1,
             yoyo: true
         })
-        let tl2 = gsap.timeline({
+        let tlp11 = gsap.timeline({
+            repeat: -1,
+            yoyo: true
+        })
+        let tlp21 = gsap.timeline({
             repeat: -1,
             yoyo: true
         })
@@ -80,11 +86,16 @@ const Page1 = () => {
         })
 
         //first text
-        tl2.fromTo(p11.current, {
+        tlp11.fromTo(p11.current, {
             rotation: 0
         }, {
-            rotation: 180, duration: 2, ease: "elastic.out", delay: 2
-        })
+            rotation: 180, duration: 2, ease: "elastic.out"
+        }, 2)
+        tlp21.fromTo(p21.current, {
+            rotation: 0
+        }, {
+            rotation: 45, duration: 2, ease: "elastic.out"
+        }, 2)
 
 
         //svg
@@ -95,12 +106,12 @@ const Page1 = () => {
             rotation: 720, duration: 5, ease: "elastic.out"
         })
 
-        tl1.fromTo(svg1, {
+        tlsvg.fromTo(svg1, {
             translateY: 50, height: 0, width: 0, opacity: 0.2
         }, {
-            translateY: 0, duration: 1, height: "5rem", width: "5rem", ease: "expo.out", opacity: 1, delay: 2
+            translateY: 0, duration: 1, height: "4rem", width: "4rem", ease: "expo.out", opacity: 1, delay: 2
         })
-        tl1.to(svg1, {
+        tlsvg.to(svg1, {
             rotation: 60, duration: 1, ease: "elastic.out", yoyo: false
         })
 
