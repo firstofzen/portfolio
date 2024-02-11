@@ -50,7 +50,10 @@ section
   width: 100%
   position: absolute
   backface-visibility: hidden
+  -webkit-backface-visibility: hidden
   transition: 0.3s all ease-out
+  @include mobile
+    margin-bottom: 1em
   ul
     li
       p

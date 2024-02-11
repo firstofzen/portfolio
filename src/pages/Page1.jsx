@@ -10,59 +10,58 @@ const Page1 = () => {
     const card2 = document.querySelector("section .card-2")
     const card3 = document.querySelector("section .card-3")
 
+    const p11 = useRef()
+    const p12 = useRef()
+    const p13 = useRef()
+    const p21 = useRef()
+    const p22 = useRef()
+    const p23 = useRef()
+
     useGSAP(() => {
-        const h1Card1 = document.querySelector("section .card-1 h1")
-        const svgCard1 = document.querySelector("section .card-1 .svg1 svg")
-        const svgCard2 = document.querySelector("section .card-1 .svg2 svg")
 
-        const p11 = document.querySelector("#p11")
-        const p12 = document.querySelector("#p12")
-        const p13 = document.querySelector("#p13")
-        const p21 = document.querySelector("#p21")
-        const p22 = document.querySelector("#p22")
-        const p23 = document.querySelector("#p23")
-
+        const svg1 = document.querySelector("section .card-1 .svg1 div svg")
+        const svg2 = document.querySelector("section .card-1 .svg2 div svg")
         //appear
 
-        gsap.fromTo(p11, {
+        gsap.fromTo(p11.current, {
             translateX: -500, ease: "expo.out"
         }, {
             translateX: 0, duration: 2, ease: "expo.out"
         })
 
-        gsap.fromTo(p12, {
+        gsap.fromTo(p12.current, {
             translateX: -500, ease: "expo.out"
         }, {
             translateX: 0, duration: 1.5, ease: "expo.out"
         })
 
-        gsap.fromTo(p13, {
+        gsap.fromTo(p13.current, {
             translateY: -200
         }, {
             translateY: 0, ease: "bounce.out", duration: 2, delay: 1
         })
 
-        gsap.fromTo(p21, {
+        gsap.fromTo(p21.current, {
 
         }, {
 
         })
 
-        gsap.fromTo(p22, {
+        gsap.fromTo(p22.current, {
 
         }, {
 
         })
 
-        gsap.fromTo(p23, {
+        gsap.fromTo(p23.current, {
 
         }, {
 
         })
 
         //appear-svg
-        gsap.fromTo(svgCard2, {
-            translateX: 1000, rotation: 0
+        gsap.fromTo(svg2, {
+            translateX: 500, rotation: 0
         }, {
             translateX: 0,rotation: 360, duration: 1, ease: "expo.out", delay: 1
         })
@@ -77,28 +76,34 @@ const Page1 = () => {
             yoyo: true
         })
         let tl3 = gsap.timeline({
-            repeat: -1, yoyo: true
+            repeat: -1, yoyo: true, repeatRefresh: true
         })
 
         //first text
-        tl2.fromTo(p11, {
+        tl2.fromTo(p11.current, {
             rotation: 0
         }, {
             rotation: 180, duration: 2, ease: "elastic.out", delay: 2
         })
 
+
         //svg
-        tl1.fromTo(svgCard1, {
+
+        tl3.fromTo(svg2,{
+            rotation: 0
+        }, {
+            rotation: 720, duration: 5, ease: "elastic.out"
+        })
+
+        tl1.fromTo(svg1, {
             translateY: 50, height: 0, width: 0, opacity: 0.2
         }, {
             translateY: 0, duration: 1, height: "5rem", width: "5rem", ease: "expo.out", opacity: 1, delay: 2
         })
-        tl1.to(svgCard1, {
+        tl1.to(svg1, {
             rotation: 60, duration: 1, ease: "elastic.out", yoyo: false
         })
-        tl3.to(svgCard2, {
-            rotate: 720, duration: 5, ease: "elastic.out"
-        })
+
 
     }, {scope: card1})
 
@@ -113,15 +118,15 @@ const Page1 = () => {
         <section className={"section page1"}>
             <div className={"card card-1"}>
                 <h1>
-                    <p id={"p11"}>D</p>
-                    <p id={"p12"}>u</p>
-                    <p id={"p13"}>c</p>
+                    <p ref={p11}>D</p>
+                    <p ref={p12}>u</p>
+                    <p ref={p13}>c</p>
                 </h1>
                 <ReactSVG src={"/static/svg1.svg"} className={"svg1"}/>
                 <h1>
-                    <p id={"p21"}>A</p>
-                    <p id={"p22"}>n</p>
-                    <p id={"p23"}>h</p>
+                    <p ref={p21}>A</p>
+                    <p ref={p22}>n</p>
+                    <p ref={p23}>h</p>
                 </h1>
                 <ReactSVG src={"/static/svg2.svg"} className={"svg2"}/>
             </div>
