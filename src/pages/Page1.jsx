@@ -1,14 +1,16 @@
 import "/src/sass/pages/page1.sass"
+import {memo} from "react";
 import {TypeAnimation} from "react-type-animation";
 import {useRef} from "react";
 import {useGSAP} from "@gsap/react";
-import {ReactSVG} from "react-svg";
 import gsap from "gsap"
+import InlineSVG from "react-inlinesvg";
+import SvgDrawPage1 from "../animations/SvgDrawPage1.jsx";
 
-const Page1 = () => {
-    const card1 = document.querySelector("section .card-1")
-    const card2 = document.querySelector("section .card-2")
-    const card3 = document.querySelector("section .card-3")
+const Page1 = memo(function Page1() {
+    const card1 = useRef()
+    const card2 = useRef()
+    const card3 = useRef()
 
     const p11 = useRef()
     const p12 = useRef()
@@ -17,11 +19,10 @@ const Page1 = () => {
     const p22 = useRef()
     const p23 = useRef()
 
+    const svg1 = useRef()
+    const svg2 = useRef()
+
     useGSAP(() => {
-
-        const svg1 = document.querySelector("section .card-1 .svg1 div svg")
-        const svg2 = document.querySelector("section .card-1 .svg2 div svg")
-
         //appear
         gsap.fromTo(p11.current, {
             translateX: -500, ease: "expo.out"
@@ -44,7 +45,7 @@ const Page1 = () => {
         gsap.fromTo(p21.current, {
             translateY: 150
         }, {
-            translateY: 0 , duration: 1, ease: "elastic.out"
+            translateY: 0, duration: 1, ease: "elastic.out"
         })
 
         gsap.fromTo(p22.current, {
@@ -61,18 +62,6 @@ const Page1 = () => {
             translateX: 0, duration: 2, ease: "elastic.out"
         })
 
-        //appear-svg
-        gsap.fromTo(svg2, {
-            translateX: 500, rotation: 0
-        }, {
-            translateX: 0,rotation: 360, duration: 1, ease: "expo.out", delay: 1
-        })
-
-        // loop
-        let tlsvg = gsap.timeline({
-            repeat: -1,
-            yoyo: true
-        })
         let tlp11 = gsap.timeline({
             repeat: -1,
             yoyo: true
@@ -80,9 +69,6 @@ const Page1 = () => {
         let tlp21 = gsap.timeline({
             repeat: -1,
             yoyo: true
-        })
-        let tl3 = gsap.timeline({
-            repeat: -1, yoyo: true, repeatRefresh: true
         })
 
         //first text
@@ -98,24 +84,41 @@ const Page1 = () => {
         }, 2)
 
 
-        //svg
+    }, {scope: card1})
 
-        tl3.fromTo(svg2,{
+    //svg card1
+    useGSAP(() => {
+        // loop
+        let tlsvg = gsap.timeline({
+            repeat: -1,
+            yoyo: true
+        })
+
+        let tl3 = gsap.timeline({
+            repeat: -1, yoyo: true, repeatRefresh: true
+        })
+
+
+        //appear-svg
+        gsap.fromTo(svg2.current, {
+            translateX: 500, rotation: 0
+        }, {
+            translateX: 0, rotation: 360, duration: 1, ease: "expo.out", delay: 1
+        })
+        //svg
+        tl3.fromTo(svg2.current, {
             rotation: 0
         }, {
             rotation: 720, duration: 5, ease: "elastic.out"
         })
-
-        tlsvg.fromTo(svg1, {
-            translateY: 50, height: 0, width: 0, opacity: 0.2
+        tlsvg.fromTo(svg1.current, {
+            translateY: 50, height: 0, width: 0, opacity: 0
         }, {
             translateY: 0, duration: 1, height: "4rem", width: "4rem", ease: "expo.out", opacity: 1, delay: 2
         })
-        tlsvg.to(svg1, {
+        tlsvg.to(svg1.current, {
             rotation: 60, duration: 1, ease: "elastic.out", yoyo: false
         })
-
-
     }, {scope: card1})
 
     useGSAP(() => {
@@ -127,28 +130,28 @@ const Page1 = () => {
     }, {scope: card3})
     return (
         <section className={"section page1"}>
-            <div className={"card card-1"}>
+            <div ref={card1} className={"card card-1"}>
                 <h1>
                     <p ref={p11}>D</p>
                     <p ref={p12}>u</p>
                     <p ref={p13}>c</p>
                 </h1>
-                <ReactSVG src={"/static/svg1.svg"} className={"svg1"}/>
+                <div ref={svg1}><InlineSVG src={"static/svg1.svg"}/></div>
                 <h1>
                     <p ref={p21}>A</p>
                     <p ref={p22}>n</p>
                     <p ref={p23}>h</p>
                 </h1>
-                <ReactSVG src={"/static/svg2.svg"} className={"svg2"}/>
+                <div ref={svg2}><InlineSVG src={"static/svg2.svg"}/></div>
             </div>
 
-            <div className={"card card-2"}>
+            <div ref={card2} className={"card card-2"}>
 
             </div>
-            <div className={"card card-3"}>
+            <div ref={card3} className={"card card-3"}>
 
             </div>
-            <div className={"my-typing"}>
+            <div className={"card my-typing"}>
                 <TypeAnimation
                     sequence={[
                         500,
@@ -172,7 +175,8 @@ const Page1 = () => {
                     deletionSpeed={70}
                 />
             </div>
+            <SvgDrawPage1 />
         </section>
     )
-}
+})
 export default Page1
