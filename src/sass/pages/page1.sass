@@ -2,18 +2,14 @@
 @import "/src/sass/global"
 
 section.page1
+  position: relative
   top: 10dvh
   display: grid
   grid-template-columns: 1fr 1fr
-  grid-template-rows: 0.7fr 1fr 0.3fr
+  grid-template-rows: 0.6fr 1fr 0.3fr
 
   .card
     z-index: 3
-
-  @include mobile
-    grid-template-columns: 1fr
-    grid-template-rows: 1fr 1fr 1fr 0.3fr
-
   .card-1
     grid-column-start: 1
     grid-column-end: 3
@@ -43,27 +39,12 @@ section.page1
           height: 3.5rem
           width: 3.5rem
 
-    @include mobile
-      grid-column-end: 2
-
-  .card-2
-    grid-row-start: 2
-    grid-row-end: 3
-    grid-column-start: 1
-    grid-column-end: 2
-    background-color: transparent
-
   .card-3
     grid-row-start: 2
     grid-row-end: 3
     grid-column-start: 2
     grid-column-end: 3
     background-color: transparent
-    @include mobile
-      grid-column-start: 1
-      grid-column-end: 2
-      grid-row-start: 3
-      grid-row-end: 4
 
   .my-typing
     grid-row-start: 3
@@ -75,6 +56,3 @@ section.page1
     background-color: transparent
     @include mobile
       font-size: 0.8em
-      grid-column-end: 2
-      grid-row-start: 4
-      grid-row-end: 5

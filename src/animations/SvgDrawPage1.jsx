@@ -1,7 +1,7 @@
 import "/src/sass/animations/SvgDrawPage1.sass"
 import InlineSVG from "react-inlinesvg";
 
-import {useEffect, useRef} from "react";
+import {useRef} from "react";
 import {useGSAP} from "@gsap/react";
 import gsap from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
@@ -31,8 +31,8 @@ const SvgDrawPage1 = () => {
     return (
         <div ref={svgDraw} className={"svg-draw"}>
             <div className={"ani1"}>
-                <div ref={ani1Svg} className={"airplane"}><InlineSVG src={"/static/svg3.svg"}/></div>
                 <InlineSVG src={"/static/path-plane.svg"} className={"path-plane"} />
+                <div ref={ani1Svg} className={"airplane"}><InlineSVG src={"/static/svg3.svg"}/></div>
             </div>
         </div>
     )

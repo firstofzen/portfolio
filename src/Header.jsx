@@ -1,28 +1,31 @@
 import "/src/sass/header.sass"
 import Popup from "reactjs-popup";
-import {useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {IoClose} from "react-icons/io5";
 import {AiOutlineMenu} from "react-icons/ai";
 
 const Header = () => {
+    const checkbox = useRef()
     const [clickTriggerPopup, setClickTriggerPopup] = useState(false)
-    const triggerPopup = () => (
-        <div className={"navbar-brand"}>
-            {clickTriggerPopup ?
-                <a role={"button"} onClick={() => setClickTriggerPopup(!clickTriggerPopup)} className={"navbar-burger"}>
-                    <IoClose size={30}/>
-                </a> :
-                <a role={"button"} onClick={() => setClickTriggerPopup(!clickTriggerPopup)} className={"navbar-burger"}>
-                    <AiOutlineMenu size={30}/>
-                </a>
-            }
-        </div>
-    )
+    useEffect(() => {
+        if(!clickTriggerPopup) {
+            checkbox.current.checked = false
+        }
+    }, [clickTriggerPopup]);
     return (
         <nav className={"navbar is-fixed-top"} role={"navigation"} aria-label={"main navigation"}>
-
-            <Popup trigger={triggerPopup} contentStyle={{transition: "all 0.4s ease-out"}} arrow={false}
-                   closeOnDocumentClick onClose={() => setClickTriggerPopup(!clickTriggerPopup)}>
+            <div className={"navbar-brand"}>
+                <label className="hamburger navbar-burger">
+                    <input ref={checkbox} type="checkbox" onClick={() => setClickTriggerPopup(true)}/>
+                    <svg viewBox="0 0 32 32">
+                        <path className="line line-top-bottom"
+                              d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
+                        <path className="line" d="M7 16 27 16"></path>
+                    </svg>
+                </label>
+            </div>
+            <Popup open={clickTriggerPopup} contentStyle={{transition: "all 0.4s ease-out"}} arrow={false}
+                   closeOnDocumentClick onClose={() => setClickTriggerPopup(false)}>
                 <aside className={"popup menu"}>
                     <p className={"menu-label"}>Social</p>
                     <ul className={"menu-list"}>

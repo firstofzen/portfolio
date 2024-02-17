@@ -5,8 +5,9 @@
 nav.navbar
   background-color: transparent !important
   backdrop-filter: blur($blur-size) !important
-  border-bottom: 1px solid  $grey-color
+  border-bottom: 1px solid $grey-color
   -webkit-backdrop-filter: blur($blur-size)
+
   .navbar-menu
     .navbar-start
       .navbar-item
@@ -18,24 +19,49 @@ nav.navbar
             &:hover
               color: ghostwhite
 
-        >*
+        > *
           transition: 0.3s all ease-out
           background-color: transparent
           color: $text-color
+
           &:hover
             background-color: transparent
+
         &:hover
           background-color: transparent !important
           border-right: 1px solid $grey-color
           transition: all 0.3s ease-out
 
   .navbar-brand
-    a
-      margin-left: 0
+    .hamburger
+      cursor: pointer
+      margin-left: 0.3em
+      input:checked + svg
+        transform: rotate(-45deg)
+
+        .line-top-bottom
+          stroke-dasharray: 20 300
+          stroke-dashoffset: -32.42
+
+      input
+        display: none
 
       svg
-        margin-top: 0.5rem
-        margin-left: 0.5rem
+        height: 3em
+        color: white
+        transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1)
+
+        .line
+          fill: none
+          stroke: white
+          stroke-linecap: round
+          stroke-linejoin: round
+          stroke-width: 3
+          transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1), stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1)
+
+        .line-top-bottom
+          stroke-dasharray: 12 63
+
 
 
 

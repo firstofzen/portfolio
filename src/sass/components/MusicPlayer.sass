@@ -1,0 +1,81 @@
+@import "/src/sass/global"
+.music-player
+  grid-row-start: 2
+  grid-row-end: 3
+  grid-column-start: 1
+  grid-column-end: 2
+  display: grid
+  grid-template-columns: 1fr 1fr
+  grid-template-rows: 1fr 0.4fr
+  background-color: transparent
+  border: 1px solid $grey-color
+  border-radius: 1em
+  @include mobile
+    grid-template-columns: 1fr
+
+  .disc
+    grid-column-start: 1
+    grid-column-end: 2
+    grid-row-start: 1
+    grid-row-end: 2
+
+    p
+      text-align: center
+      color: white
+
+    @include desktop
+      border-right: 1px solid $grey-color
+    @include tablet
+      border-right: 1px solid $grey-color
+  .lyric
+    grid-column-start: 2
+    grid-column-end: 3
+    grid-row-start: 1
+    grid-row-end: 3
+    @include mobile
+      display: none
+
+  .music-controls
+    grid-row-start: 2
+    grid-row-end: 3
+    grid-column-start: 1
+    grid-column-end: 2
+    @include flex-center
+    flex-direction: column
+    @include desktop
+      border-right: 1px solid $grey-color
+    @include tablet
+      border-right: 1px solid $grey-color
+
+    .controls
+      border: none !important
+      button
+        height: 3rem
+        width: 3rem
+        background-color: transparent
+        outline: none
+        border: none
+        @include mobile
+          height: 2rem
+          width: 2rem
+
+        svg
+          height: 90%
+          width: auto
+          color: white
+
+    .time
+      width: 95%
+      display: flex
+      justify-content: space-between
+      margin-left: 0.1em
+      margin-right: 0.1em
+
+      p
+        color: white
+
+    .timeline
+      margin-left: 0.1em
+      margin-right: 0.1em
+      width: 95%
+      background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%)

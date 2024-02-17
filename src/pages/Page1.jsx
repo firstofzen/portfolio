@@ -6,6 +6,7 @@ import {useGSAP} from "@gsap/react";
 import gsap from "gsap"
 import InlineSVG from "react-inlinesvg";
 import SvgDrawPage1 from "../animations/SvgDrawPage1.jsx";
+import MusicPlayer from "../components/MusicPlayer.jsx";
 
 const Page1 = memo(function Page1() {
     const card1 = useRef()
@@ -145,9 +146,8 @@ const Page1 = memo(function Page1() {
                 <div ref={svg2}><InlineSVG src={"static/svg2.svg"}/></div>
             </div>
 
-            <div ref={card2} className={"card card-2"}>
+            <MusicPlayer className={"card"} />
 
-            </div>
             <div ref={card3} className={"card card-3"}>
 
             </div>
@@ -175,7 +175,6 @@ const Page1 = memo(function Page1() {
                     deletionSpeed={70}
                 />
             </div>
-            <SvgDrawPage1 />
         </section>
     )
 })

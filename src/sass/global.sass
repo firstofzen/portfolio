@@ -38,7 +38,9 @@ section
   display: grid
   margin-inline: auto
   margin-bottom: 5px
-  height: 100svh !important
+  min-height: 100dvh !important
+  @include mobile
+    min-height: 600px !important
   border-bottom: 1px solid $grey-color
 
 .glass-card
