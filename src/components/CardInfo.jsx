@@ -6,6 +6,7 @@ import {useInView} from "react-intersection-observer";
 
 const CardInfo = ({name, tile, level, skills, isRight}) => {
     const contentRef = useRef()
+    const innerRef = useRef()
     const h1Ref = useRef()
     const h2Ref = useRef()
 
@@ -16,8 +17,8 @@ const CardInfo = ({name, tile, level, skills, isRight}) => {
 
     useGSAP(() => {
         let tl = gsap.timeline();
-        const contentcard = document.querySelector("#content-card")
         if (inView) {
+            gsap.to(innerRef.current, {display: "flex"})
             tl.to(h1Ref.current, {
                 x: 0, opacity: 1, duration: 1.5, ease: "power4.out"
             })
@@ -36,13 +37,13 @@ const CardInfo = ({name, tile, level, skills, isRight}) => {
 
     return (
         <div ref={cardRef} className={"card-info"}>
-            <div className={`${name}`}>
+            <div ref={innerRef} className={`${name}`}>
                 <h1 ref={h1Ref}
                     style={isRight ? {transform: "translateX(60%)"} : {transform: "translateX(-60%)"}}>{tile}</h1>
                 <h2 ref={h2Ref}
                     style={isRight ? {transform: "translateX(60%)"} : {transform: "translateX(-60%)"}}>level: {level}</h2>
                 <ul ref={contentRef}
-                    style={isRight ? {borderRight: "3px solid white", transform: "translateX(130%)"} : {borderLeft: "3px solid white", transform: "translateX(-130%)"}}>
+                    style={isRight ? {borderRight: "3px solid white", transform: "translateX(60%)"} : {borderLeft: "3px solid white", transform: "translateX(-60%)"}}>
                     {skills.map((s, i) => <li id={"content-card"} key={i}
                                               style={isRight ? {justifyContent: "flex-end"} : {}}>
                         <p style={isRight ? {transform: "translateX(-2.2rem) translateY(-0.2em)"} : {transform: "translateX(2.2rem) translateY(-0.2em)"}}>{s}</p>
