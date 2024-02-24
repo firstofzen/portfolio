@@ -1,18 +1,23 @@
 @use "sass:math"
 @import "node_modules/bulma/bulma"
 $dark-color: #0e100f
-$grey-color: #adb5bd
+$grey-color: #495057
 $card-color: #2b2d42
 $blur-size: 35px
 $text-color: #8d99ae
 $dark-blue-color: #415a77
 $light-pink-color: #ffe5ec
-
+$gradient-timber: linear-gradient(to right, #fc00ff, #00dbde)
+$gradient-lawren: linear-gradient(to right, #24243e, #302b63, #0f0c29)
 @mixin flex-center
   display: flex
   justify-content: center
   align-items: center
-
+@keyframes backgroundMove
+  0%
+    background-position: 0 0
+  100%
+    background-position: 100% 0
 .popup
   position: fixed
   height: max-content
@@ -33,44 +38,10 @@ $light-pink-color: #ffe5ec
 
   @include desktop
     display: none
-
-section
-  display: grid
+.section
   margin-inline: auto
   margin-bottom: 5px
   min-height: 100dvh !important
-  @include mobile
-    min-height: 600px !important
   border-bottom: 1px solid $grey-color
-
-.glass-card
-  backdrop-filter: blur(15px)
-  -webkit-backdrop-filter: blur($blur-size)
-  border: 2px solid $grey-color
-  border-radius: 5px
-  height: 100%
-  width: 100%
-  position: absolute
-  backface-visibility: hidden
-  -webkit-backface-visibility: hidden !important
-  transform: translate3d(0, 0, 0)
-  -webkit-transform-style: preserve-3d
-  transition: 0.3s all ease-out
   @include mobile
-    margin-bottom: 1em
-  ul
-    li
-      p
-        text-align: center
-        color: $text-color
-        font-size: 0.8em
-      h1
-        font-size: math.clamp(1.1em, 1.3em, 1.4em)
-        color: white
-        text-align: center
-  h1.my-tile
-    text-align: center
-    color: white
-    font-size: math.clamp(1em, 1.6em, 1.8em)
-
-
+    min-height: 150svh !important

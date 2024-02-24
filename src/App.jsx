@@ -1,23 +1,29 @@
 import './sass/App.sass'
-import Header from "./Header.jsx";
-import Page1 from "./pages/Page1.jsx";
-import Page2 from "./pages/Page2.jsx";
-import Page3 from "./pages/Page3.jsx";
-import Footer from "./pages/Footer.jsx";
-import {Suspense} from "react";
+import {Suspense, lazy} from "react";
 
+const Footer = lazy(() => import("./pages/Footer.jsx"))
+const Page1 = lazy(() => import("./pages/Page1.jsx"))
+const Page2  = lazy(() => import("./pages/Page2.jsx"))
+const Page3 = lazy(() => import("./pages/Page3.jsx"))
+const Header = lazy(() => import("./Header.jsx"))
 function App() {
+    const  suspense = (
+        <div className={"suspend section"}>
+            <p>Loading...</p>
+        </div>
+    )
+
     return (
-        <Suspense fallback={null}>
-        <main className={"container is-large"}>
-            <Header />
-            <div className={"container is-fullhd"}>
-                <Page1/>
-                <Page2/>
-                <Page3/>
-                <Footer />
-            </div>
-        </main>
+        <Suspense fallback={suspense}>
+            <main className={"container is-large"}>
+                <Header/>
+                <div className={"container is-fullhd"}>
+                    <Page1/>
+                    <Page2/>
+                    <Page3/>
+                    <Footer/>
+                </div>
+            </main>
         </Suspense>
     )
 }

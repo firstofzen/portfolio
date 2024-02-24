@@ -46,6 +46,7 @@ const MusicPlayer = (props) => {
         <div {...props} className={"music-player"}>
             <div className={"disc"}>
                 <p>Co Gai Vang</p>
+                <span><img className={"image "} src={"/static/xie.jpg"}/></span>
             </div>
             <div className={"lyric"}>
 
@@ -63,12 +64,14 @@ const MusicPlayer = (props) => {
                     type="range"
                     min="0"
                     max={duration / 1000}
-                    default="0"
+                    step={1}
                     value={seconds}
                     className="timeline"
+                    defaultValue={0}
                     onChange={(e) => {
                         sound.seek([e.target.value]);
                     }}
+
                 />
                 <div className={"controls"}>
                     <button onClick={() => {

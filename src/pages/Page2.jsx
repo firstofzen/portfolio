@@ -1,63 +1,59 @@
 import "/src/sass/pages/page2.sass"
+import CardInfo from "../components/CardInfo.jsx";
+import {useRef} from "react";
+import {useGSAP} from "@gsap/react";
+import gsap from "gsap";
 
 const Page2 = () => {
+    const circle1Ref = useRef()
+    const circle2Ref = useRef()
+    const circle3Ref = useRef()
+    const circle4Ref = useRef()
+    const circle5Ref = useRef()
+    const layer1Ref = useRef()
+
+    useGSAP(() => {
+        gsap.to(circle1Ref.current, {
+            xPercent: 150, yPercent: 160, duration: 7, ease: "none", yoyo: true, repeat: -1
+        })
+        gsap.to(circle2Ref.current, {
+            xPercent: -90, yPercent: -160, duration: 7, ease: "none", yoyo: true, repeat: -1
+        })
+        gsap.to(circle3Ref.current, {
+            xPercent:-140, yPercent: 100, duration: 7, ease: "none", yoyo: true, repeat: -1
+        })
+        gsap.to(circle4Ref.current, {
+            xPercent: 80, yPercent: -90, duration: 7, ease: "none", yoyo: true, repeat: -1
+        })
+        gsap.to(circle5Ref.current, {
+            xPercent: -30, yPercent: -100, duration: 7, ease: "none", yoyo: true, repeat: -1
+        })
+    }, {scope: layer1Ref.current})
 
     return (
-        <section className={"section page2"}>
-            <div className={"my-card java"}>
-                <div className={"glass-card gc-front"}>
-                    <h1 className={"my-tile"}>Java</h1>
-                </div>
-                <div className={"glass-card gc-back"}>
-                    <ul>
-                        <li><h1>level: useful</h1></li>
-                        <li><p>java core</p></li>
-                        <li><p>spring framework</p></li>
-                        <li><p>common lib</p></li>
-                        <li><p>build tool</p></li>
-                    </ul>
-                </div>
+        <section className={"section"}>
+
+            <div ref={layer1Ref} className={"layer1"}>
+                <div ref={circle1Ref} className={"circle"} style={{backgroundColor: "red"}}></div>
+                <div ref={circle2Ref} className={"circle"} style={{backgroundColor: "blue"}}></div>
+                <div ref={circle3Ref} className={"circle"} style={{backgroundColor: "violet"}}></div>
+                <div ref={circle4Ref} className={"circle"} style={{backgroundColor: "lightyellow"}}></div>
+                <div ref={circle5Ref} className={"circle"} style={{backgroundColor: "green"}}></div>
             </div>
-            <div className={"my-card golang"}>
-                <div className={"glass-card gc-front"}>
-                    <h1 className={"my-tile"}>golang</h1>
-                </div>
-                <div className={"glass-card gc-back"}>
-                    <ul>
-                        <li><h1>level: useful</h1></li>
-                        <li><p>basic-syntax</p></li>
-                        <li><p>common lib</p></li>
-                        <li><p>gin framework</p></li>
-                    </ul>
-                </div>
-            </div>
-            <div className={"my-card frontend"}>
-                <div className={"glass-card gc-front"}>
-                    <h1 className={"my-tile"}>frontend</h1>
-                </div>
-                <div className={"glass-card gc-back"}>
-                    <ul>
-                        <li><h1>level: useful</h1></li>
-                        <li><p>html, css, js</p></li>
-                        <li><p>reactjs</p></li>
-                        <li><p>threejs</p></li>
-                    </ul>
-                </div>
+            <div className={"layer2"}>
 
             </div>
-            <div className={"my-card devops"}>
-                <div className={"glass-card gc-front"}>
-                    <h1 className={"my-tile"}>devops</h1>
+                <div className={"page2"}>
+                    <CardInfo name={"java"} tile={"java"} level={"useful"}
+                              skills={["spring framework", "build tool", "java 21", "common library"]}/>
+                    <CardInfo isRight={true} name={"golang"} tile={"golang"} level={"useful"}
+                              skills={["common library", "core syntax", "goroutines", "gin framework"]}/>
+                    <CardInfo name={"devops"} tile={"devops"} level={"basic"}
+                              skills={["docker", "kubernetes", "git github", "ci cd tools", "cloud native"]}/>
+                    <CardInfo isRight={true} name={"frontend"} tile={"frontend"} level={"useful"}
+                              skills={["reactjs", "html css", "threejs", "common javascript library"]}/>
                 </div>
-                <div className={"glass-card gc-back"}>
-                    <ul>
-                        <li><h1>level: basic</h1></li>
-                        <li><p>aws</p></li>
-                        <li><p>docker, k8s</p></li>
-                        <li><p>teamcity</p></li>
-                    </ul>
-                </div>
-            </div>
+
         </section>
     )
 }

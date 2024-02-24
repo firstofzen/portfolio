@@ -1,11 +1,9 @@
 import "/src/sass/pages/page1.sass"
-import {memo} from "react";
+import {memo, useRef} from "react";
 import {TypeAnimation} from "react-type-animation";
-import {useRef} from "react";
 import {useGSAP} from "@gsap/react";
 import gsap from "gsap"
 import InlineSVG from "react-inlinesvg";
-import SvgDrawPage1 from "../animations/SvgDrawPage1.jsx";
 import MusicPlayer from "../components/MusicPlayer.jsx";
 
 const Page1 = memo(function Page1() {

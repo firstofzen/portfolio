@@ -1,13 +1,14 @@
 @use "sass:math"
 @import "/src/sass/global"
 
+
+section
+  display: grid
 section.page1
   position: relative
-  top: 10dvh
   display: grid
   grid-template-columns: 1fr 1fr
   grid-template-rows: 0.6fr 1fr 0.3fr
-
   .card
     z-index: 3
   .card-1
@@ -28,6 +29,8 @@ section.page1
       gap: 0.1em
       font-weight: bold
       color: $light-pink-color
+
+
       @include mobile
         font-size: 3rem
 
