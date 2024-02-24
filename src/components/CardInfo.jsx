@@ -18,7 +18,7 @@ const CardInfo = ({name, tile, level, skills, isRight}) => {
     useGSAP(() => {
         let tl = gsap.timeline();
         if (inView) {
-            gsap.to(innerRef.current, {display: "flex"})
+            gsap.to(innerRef.current, {display: "flex" , delay: 0.4})
             tl.to(h1Ref.current, {
                 x: 0, opacity: 1, duration: 1.5, ease: "power4.out"
             })
@@ -26,10 +26,7 @@ const CardInfo = ({name, tile, level, skills, isRight}) => {
                 x: 0, opacity: 1, duration: 1.6, ease: "power4.out"
             }, 0.4)
             tl.to(contentRef.current, {
-                height: "auto", duration: 1.7, ease: "power4.out"
-            }, 0.5)
-            tl.to(contentRef.current, {
-                x: 0,opacity: 1, duration: 1.2, ease: "power4.out"
+                x: 0,opacity: 1, duration: 1.2, ease: "power4.out",
             }, 0.3)
         }
     }, {scope: card, dependencies: [inView], revertOnUpdate: true})
