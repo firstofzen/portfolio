@@ -1,5 +1,6 @@
 @use "sass:math"
 @import "node_modules/bulma/bulma"
+
 $dark-color: #0e100f
 $grey-color: #495057
 $card-color: #2b2d42
@@ -9,39 +10,21 @@ $dark-blue-color: #415a77
 $light-pink-color: #ffe5ec
 $gradient-timber: linear-gradient(to right, #fc00ff, #00dbde)
 $gradient-lawren: linear-gradient(to right, #24243e, #302b63, #0f0c29)
+$gradient-coolsky: linear-gradient(to right, #2980b9, #6dd5fa, #ffffff)
+
 @mixin flex-center
   display: flex
   justify-content: center
   align-items: center
+
 @keyframes backgroundMove
   0%
     background-position: 0 0
   100%
     background-position: 100% 0
-.popup
-  position: fixed
-  height: max-content
-  width: 50svw
-  left: 5px
-  top: clamp(8.6dvh, 8.7dvh, 8.9dvh)
-  border: 0.7px solid white
-  z-index: 5
-  transition: all 0.3s ease-out
-  font-size: 1.2rem
-  backdrop-filter: blur($blur-size)
-  -webkit-backdrop-filter: blur($blur-size)
-  border-radius: 10px
 
-  >*
-    margin-left: 1em
-    margin-top: 1em
-
-  @include desktop
-    display: none
 .section
-  margin-inline: auto
-  margin-bottom: 5px
-  min-height: 100dvh !important
+  min-height: 100svh !important
   border-bottom: 1px solid $grey-color
   @include mobile
     min-height: 150svh !important

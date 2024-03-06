@@ -2,6 +2,26 @@
 @import "global"
 
 
+.popup
+  position: fixed
+  height: max-content
+  width: 50svw
+  left: 5px
+  top: clamp(8.6dvh, 8.7dvh, 8.9dvh)
+  border: 0.7px solid white
+  z-index: 5
+  transition: all 0.3s ease-out
+  font-size: 1.2rem
+  backdrop-filter: blur($blur-size)
+  -webkit-backdrop-filter: blur($blur-size)
+  border-radius: 10px
+  >*
+    margin-left: 1em
+    margin-top: 1em
+
+  @include desktop
+    display: none
+
 nav.navbar
   background-color: transparent !important
   backdrop-filter: blur($blur-size) !important

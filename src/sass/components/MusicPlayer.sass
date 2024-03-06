@@ -1,5 +1,6 @@
 @import "/src/sass/global"
 .music-player
+  z-index: 2
   grid-row-start: 2
   grid-row-end: 3
   grid-column-start: 1
@@ -8,12 +9,15 @@
   grid-template-columns: 1fr 1fr
   grid-template-rows: 1fr 0.4fr
   background-color: transparent
-  border: 1px solid $grey-color
+  border: 2px solid $grey-color
   border-radius: 1em
-  height: 90%
+  max-height: 90%
+  backdrop-filter: blur(5px)
+  -webkit-backdrop-filter: blur(5px)
   @include mobile
     grid-template-columns: 1fr
-    max-height: 60%
+    grid-template-rows: 1fr 0.3fr
+    max-height: 70%
   .disc
     grid-column-start: 1
     grid-column-end: 2
@@ -23,18 +27,21 @@
     flex-direction: column
     span
       @include flex-center
+
+
       img
         max-height: 90%
         width: 80%
         border-radius: 1em
+
     p
       text-align: center
       color: white
 
     @include desktop
-      border-right: 1px solid $grey-color
+      border-right: 2px solid $grey-color
     @include tablet
-      border-right: 1px solid $grey-color
+      border-right: 2px solid $grey-color
 
   .lyric
     grid-column-start: 2
@@ -49,30 +56,30 @@
     grid-row-end: 3
     grid-column-start: 1
     grid-column-end: 2
-    @include flex-center
+    display: flex
     flex-direction: column
+    align-items: center
+    justify-content: space-around
     @include desktop
-      border-right: 1px solid $grey-color
+      border-right: 2px solid $grey-color
     @include tablet
-      border-right: 1px solid $grey-color
+      border-right: 2px solid $grey-color
 
     .controls
       border: none !important
-
       button
-        height: 3rem
-        width: 3rem
+        height: 2rem
+        width: 2rem
         background-color: transparent
         outline: none
         border: none
-        @include mobile
-          height: 2rem
-          width: 2rem
-
         svg
-          height: 60%
+          height: 70%
           width: auto
           color: white
+          -webkit-filter: drop-shadow(0 0 0.55rem white)
+          filter: drop-shadow(0 0 0.55rem white)
+
 
     .time
       width: 95%
@@ -80,8 +87,8 @@
       justify-content: space-between
       margin-left: 0.1em
       margin-right: 0.1em
-
       p
+        margin-bottom: 0.4em
         font-size: 0.7em
         color: white
 
@@ -96,14 +103,16 @@
       max-width: 100%
       max-height: 0.5svh
       border-radius: 2rem
-      background: $gradient-lawren
-
-      &:focus, &:active, &:focus
+      background-image: $gradient-coolsky
+      filter: drop-shadow(0 0 0.25rem blue)
+      -webkit-filter: drop-shadow(0 0 0.25rem blue)
+      &:focus
         outline: none
-
       &::-webkit-slider-thumb
-        background-color: red
-      &::-ms-thumb
-        background-color: red
-      &::-moz-range-thumb
-        background-color: red
+        height: 2em
+        width: 2em
+        border-radius: 100%
+        -webkit-appearance: none
+        background: url("/static/icon-thumb.svg")
+        filter: drop-shadow(0 0 0.55rem white)
+        -webkit-filter: drop-shadow(0 0 0.55rem white)

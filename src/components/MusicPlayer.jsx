@@ -2,11 +2,18 @@ import "/src/sass/components/MusicPlayer.sass"
 import cogaivang from "/static/cogaivang.mp3?url"
 import useSound from "use-sound";
 import {CiPause1, CiPlay1} from "react-icons/ci";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
+import {useGSAP} from "@gsap/react";
+import gsap from "gsap"
+import {ScrollTrigger} from "gsap/ScrollTrigger";
 
-const MusicPlayer = (props) => {
+const MusicPlayer = () => {
+
+    const musicPlayerRef = useRef()
+    const page1 = document.querySelector("section.page1")
+
     const [playSound, {stop, sound, duration}] = useSound(cogaivang)
-    const [playingSound , setPlayingSound] = useState(false)
+    const [playingSound, setPlayingSound] = useState(false)
     const [currTime, setCurrTime] = useState({
         min: "",
         sec: ""
@@ -42,11 +49,27 @@ const MusicPlayer = (props) => {
         }, 1000);
         return () => clearInterval(interval);
     }, [sound]);
+
+    useGSAP(() => {
+        gsap.registerPlugin(ScrollTrigger)
+
+        let scroll = gsap.timeline({
+            scrollTrigger: {
+                scrub: true,
+                trigger: page1,
+                start: "top top",
+                end: "bottom"
+            }
+        })
+        scroll.to(musicPlayerRef.current, {
+            yPercent: -50, duration: 6, ease: "sine.out",
+        })
+    }, {scope: page1})
     return (
-        <div {...props} className={"music-player"}>
+        <div className={"music-player"} ref={musicPlayerRef}>
             <div className={"disc"}>
                 <p>Co Gai Vang</p>
-                <span><img className={"image "} src={"/static/xie.jpg"}/></span>
+                <span><img className={"image "} src={"/static/xie.jpg"} alt={"image"}/></span>
             </div>
             <div className={"lyric"}>
 

@@ -1,5 +1,5 @@
-import './sass/App.sass'
-import {Suspense, lazy} from "react";
+import {lazy, Suspense} from "react";
+import './sass/App.sass';
 
 const Footer = lazy(() => import("./pages/Footer.jsx"))
 const Page1 = lazy(() => import("./pages/Page1.jsx"))
@@ -11,8 +11,7 @@ function App() {
         <div className={"suspend section"}>
             <p>Loading...</p>
         </div>
-    )
-
+    )    
     return (
         <Suspense fallback={suspense}>
             <main className={"container is-large"}>
